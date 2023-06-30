@@ -1,16 +1,22 @@
+"""
+this snippet of code calculates gross pay but also uses 
+try and except to handle user tracebacks
+"""
 #user input
-score = input("Enter a score :")
-fscore = float(score)
-if fscore >= 0.0 and fscore <= 1.0:
-    if fscore >= 0.9:
-        print("A")
-    elif fscore >= 0.8:
-        print("B")
-    elif fscore >= 0.7:
-        print("C")
-    elif fscore >= 0.6:
-        print("D")
-    elif fscore < 0.6:
-        print("E")
-else:
-    print("out of range")
+hrs = input("Enter Hours:")
+rate = input("Enter Rate:")
+try:
+    h = float(hrs)
+    r = float(rate)
+#overtime
+    if h > 40:
+        reg = h * r
+        otp = (h - 40) * (r * 0.5)
+        xp = reg + otp
+        print(xp)
+#normal pay
+    else:
+        xp = h * r
+        print(xp)
+except:
+    print("Please enter a number")
