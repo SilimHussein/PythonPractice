@@ -8,6 +8,9 @@ rate = input("Enter Rate:")
 try:
     h = float(hrs)
     r = float(rate)
+except:
+    print("Please enter a number")
+    quit()
 #overtime
     if h > 40:
         reg = h * r
@@ -18,5 +21,3 @@ try:
     else:
         xp = h * r
         print(xp)
-except:
-    print("Please enter a number")
