@@ -1,6 +1,10 @@
 #user input
 score = input("Enter a score :")
-fscore = float(score)
+try:
+    fscore = float(score)
+except:
+    print("please enter a number")
+    quit()
 if fscore >= 0.0 and fscore <= 1.0:
     if fscore >= 0.9:
         print("A")
