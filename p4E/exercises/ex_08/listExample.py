@@ -9,8 +9,8 @@ print('item on index [1] is ',numbers[1])
 numbers[1] = 5
 print('After mutation numbers list looks like:', numbers)
 #in operator in lists
-'Edam' in cheeses
-'Brie' in cheeses
+print('Edam' in cheeses)
+print('Brie' in cheeses)
 #traversing athe elements of a list using for loop
 for cheese in cheeses:
     print('we used for loop to traverse:',cheese)

@@ -12,6 +12,7 @@ delimiter = '-'
 t2 = s2.split(delimiter)
 print(t2)
 #join is the inverse of split, concatenates elements of a list into a string
+#notice though that join is a string function, so you have to invoke the delimiter
 t3 = ['pining','for','the','fjords']
 delimiter = ' '
 s3 = delimiter.join(t3)

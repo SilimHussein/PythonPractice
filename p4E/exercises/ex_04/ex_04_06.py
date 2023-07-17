@@ -1,8 +1,12 @@
 #user input
 hrs = input("Enter Hours:")
 rate = input("Enter Rate:")
-h = float(hrs)
-r = float(rate)
+try:
+    h = float(hrs)
+    r = float(rate)
+except:
+    print('please enter a valid number')
+    exit()
 
 
 def computepay(hours, rate):
