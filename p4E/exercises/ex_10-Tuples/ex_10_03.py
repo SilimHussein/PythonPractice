@@ -7,6 +7,7 @@ except:
     exit()
 
 counts = dict()
+lst = []
 for line in fhand:
     line = line.rstrip()
     line = line.lower()
@@ -15,11 +16,16 @@ for line in fhand:
     #print(line)
     x = re.findall('[a-z]\S*', line)
     if len(x) > 0:
-        print(x)
-    #words = line.split()
-    #letters = words.split()
-    #print(letters)
+        #print(x)
+        lst.append(x[0])
+        
+print(lst)
 """
+    words = line.split()
+    letters = words.split()
+    print(letters)
+    
+
     for word in words:
         counts[word] = counts.get(word, 0) + 1
 
