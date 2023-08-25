@@ -28,6 +28,7 @@ uh = urllib.request.urlopen(url, context = ctx)
 data = uh.read().decode()
 print('Retrieved', len(data), 'characters')
 
+#loading json, error checking, printing the found data
 try:
     js = json.loads(data)
 except:
@@ -37,5 +38,7 @@ if not js or 'status' not in js or js['status'] != 'OK':
     print('==== Failure to Retrieve ====')
     print(data)
 
-print(json.dumps(js, indent =4))
-
+#print(json.dumps(js, indent =4))
+#retrieving Place id from json and printing it out to match formatted output
+place_id = js['results'][0]['place_id']
+print('Place id ', place_id)
