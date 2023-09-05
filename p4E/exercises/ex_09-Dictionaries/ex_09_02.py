@@ -11,9 +11,9 @@ for line in fhand:
     line = line.rstrip()
     if not line.startswith('From '): continue
     words = line.split()
-    #print(words)
+    #print("debug, a list of lines that start with from:", words)
     days = words[2].split()
-    #print(day)
+    #print("debug, value at index[2] are the days:",days)
     for day in days:
         counts[day] = counts.get(day, 0) + 1
 

@@ -15,10 +15,14 @@ for line in fhand:
     words = line.split()
     timestamp = words[5]
     timestamplst = timestamp.split(':')
+    #print("time stamp list debug :",timestamplst)
     hourslst = timestamplst[0].split()
+    #debug print("hours list debut: ", hourslst)
     for hours in hourslst:
+        # tracy debug print(f'Hours: {hours} Hourslist {hourslst}')
         counts[hours] = counts.get(hours, 0) + 1
-    
+
+
 #print(counts)
 #key = hours, val = counts
 lst = list()
