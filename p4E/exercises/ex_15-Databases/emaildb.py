@@ -14,7 +14,7 @@ CREATE TABLE Counts (email TEXT, count INTEGER)''')
 
 #opening a file
 fname = input('Enter file name: ')
-if (len(fname) < 1): fname = 'mbox-short.txt'
+if (len(fname) < 1): fname = 'mbox.txt'
 fh = open(fname)
 for line in fh:
     #picking lines that only starts with From
@@ -34,8 +34,8 @@ for line in fh:
         #otherwise if the row has emails, it updates the rows
         cur.execute('UPDATE Counts SET count = count + 1 WHERE email = ?',
         (email,))
-    #commits connection, I presume its like the git commit
-    conn.commit()
+#commits connection, I presume its like the git commit
+conn.commit()
 
 #selects emails from the Count Table ordered by count in a descending order
 sqlstr = 'SELECT email, count FROM Counts ORDER BY count DESC LIMIT 10'
