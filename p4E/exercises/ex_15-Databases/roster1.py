@@ -30,12 +30,11 @@ CREATE TABLE Member (
 
 fname = input('Enter file name: ')
 if len(fname) < 1:
-    fname = 'roster_data.json'
+    fname = 'roster_data_sample.json'
 
 str_data = open(fname).read()
 json_data = json.loads(str_data)
 
-iteration = 0
 for entry in json_data:
 
     name = entry[0]
@@ -58,32 +57,4 @@ for entry in json_data:
         (user_id, course_id, role) VALUES ( ?, ?, ?)''', 
         ( user_id, course_id, role))
 
-    # force a write operation to the database file after every 20 entries
-    iteration += 1
-    if iteration == 20:
-        conn.commit()
-        iteration = 0
-
-    # display each entry after being inserted
-    print(name, title, role)
-
-conn.commit()
-
-# test command #1
-method1 = '''
-    SELECT User.name, Course.title, Member.role
-    FROM User JOIN Member JOIN Course
-    ON User.id = Member.user_id AND Member.course_id = Course.id
-    ORDER BY User.name DESC, Course.title DESC, Member.role DESC LIMIT 2'''
-testMethod(method1, 1)
-
-# test command #2
-method2 = '''
-    SELECT 'XYZZY' || HEX( User.name || Course.title || Member.role ) AS X
-    FROM User JOIN Member JOIN Course
-    ON User.id = Member.user_id AND Member.course_id = Course.id
-    ORDER BY X LIMIT 1'''
-testMethod(method2, 2)
-
-# close connection to the database
-conn.close()
+    conn.commit()
