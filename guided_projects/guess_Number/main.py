@@ -21,6 +21,30 @@ def guess(x):
             print(f"Game over! The number was {random_number}.")
             break
 
-guess(10)
+def computer_guess(x):
+    low = 1
+    high = x
+    feedback = ''
+    attempts = 0
+
+    while feedback != 'c' and attempts < 5:
+        if low != high:
+            guess = random.randint(low, high)
+        else:
+            guess = low
+        attempts += 1
+
+        feedback = input(f'Attempt {attempts}/5: Is {guess} too high (H), too low (L), or correct (C)?').lower()
+        
+        if feedback == 'h':
+            high = guess - 1
+        elif feedback == 'l':
+            low = guess + 1
+    if feedback == 'c':
+        print(f"Yay! The computer has guessed your number, {guess}, correctly!")
+    else:
+        print(f"Game over, the computer could'nt guess the number within 5 attempts.")
+
+computer_guess(10)
 
 
