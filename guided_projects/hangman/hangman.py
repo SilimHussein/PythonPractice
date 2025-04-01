@@ -54,10 +54,10 @@ def hangman():
         
         elif user_letter in used_letters: # if user input has already been tried 
             print("You have already used that character. Please try again. ")
-
+    
         else:
             print("Invalid character. Please try again.") # if user input is anything other than alphabet
-    
+        
     if lives == 0: 
         print(f'You died. The word was {word}') 
     else: 
