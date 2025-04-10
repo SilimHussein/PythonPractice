@@ -1,4 +1,14 @@
 from player import HumanPlayer, RandomComputerPlayer
+import random
+import time
+
+def print_emoji_fireworks():
+    fireworks = ['🎆', '🎇', '✨', '🚀', '🔥', '🌟']
+    for _ in range(5):
+        line = '   '.join(random.choices(fireworks, k=10))
+        print(line)
+        time.sleep(0.3)
+    print("\n")
 
 class TicTacToe:
     def __init__(self):
@@ -98,7 +108,8 @@ def play(game, x_player, o_player, print_game=True):
 
             if game.current_winner:
                 if print_game:
-                    print(letter + ' Wins!')
+                    print(f"\n🎉 {letter} Wins! 🎉")
+                    print_emoji_fireworks()
                 return letter
         
         # after we made our move, we need to alternate letters
@@ -108,7 +119,30 @@ def play(game, x_player, o_player, print_game=True):
         print("It's a tie!")
 
 if __name__ == '__main__':
-    x_player = HumanPlayer('X')
-    o_player = RandomComputerPlayer('O')
-    t = TicTacToe()
-    play(t, x_player, o_player, print_game= True)
+    x_wins = 0
+    o_wins = 0
+    ties = 0
+
+# Score board
+    while True:
+        x_player = HumanPlayer('X')
+        o_player = RandomComputerPlayer('O')
+        t = TicTacToe()
+        result = play(t, x_player, o_player, print_game= True)
+
+        if result == 'X':
+            x_wins += 1
+        elif result == 'O':
+            o_wins += 1
+        else:
+            ties += 1
+
+        print(f"\n🏆 Scoreboard:")
+        print(f"X (You): {x_wins}")
+        print(f"O (Computer): {o_wins}")
+        print(f"Ties: {ties}\n")
+
+        play_again = input("Play again? y/n: ").lower()
+        if play_again != 'y':
+            print("Thanks for playing!")
+            break

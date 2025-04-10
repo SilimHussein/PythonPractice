@@ -39,6 +39,8 @@ def hangman():
         Condition (Optional) → A filter to pick only some items.
 
         '''
+
+        # What the current word is (i.e W-RD)
         word_list = [letter if letter in used_letters else '-' for letter in word]
         print('Current word: ', ' '.join(word_list))
 
