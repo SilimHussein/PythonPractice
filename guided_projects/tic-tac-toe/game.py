@@ -136,7 +136,7 @@ if __name__ == '__main__':
         o_player = RandomComputerPlayer('O')
         t = TicTacToe()
 
-        # Play a game and tet the result
+        # Play a game and test the result
         result = play(t, x_player, o_player, print_game= True)
 
         # Update scoreboared based on result
@@ -158,3 +158,4 @@ if __name__ == '__main__':
         if play_again != 'y':
             print("Thanks for playing!")
             break
+
