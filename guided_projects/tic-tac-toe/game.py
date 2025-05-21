@@ -1,4 +1,4 @@
-from player import HumanPlayer, RandomComputerPlayer
+from player import HumanPlayer, RandomComputerPlayer, SmartComputerPlayer
 import random
 import time
 
@@ -129,11 +129,11 @@ if __name__ == '__main__':
     x_wins = 0
     o_wins = 0
     ties = 0
-
+    
     while True:
         # Set up players and game board
         x_player = HumanPlayer('X')
-        o_player = RandomComputerPlayer('O')
+        o_player = SmartComputerPlayer('O')
         t = TicTacToe()
 
         # Play a game and test the result
@@ -158,4 +158,5 @@ if __name__ == '__main__':
         if play_again != 'y':
             print("Thanks for playing!")
             break
-
+    
+    
