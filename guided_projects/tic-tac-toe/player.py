@@ -56,6 +56,7 @@ class SmartComputerPlayer(Player):
         if len(game.available_moves()) == 9:
             square = random.choice(game.available_moves())
         else:
+            # Get the square based off the minimax algorithm
             square = self.minimax(game, self.letter)['position']
         return square
 
@@ -64,24 +65,36 @@ class SmartComputerPlayer(Player):
         other_player = 'O' if player == 'X' else 'X'
 
         # First we want to check if the previous move is a winner
+        # This is our base case
         if state.current_winner == other_player:
-            return {'position': None, 'score': 1 * (state.num_empty_squares() +1) if other_player == max_player else -1 * (state.num_empty_squares()+1)}
-        elif not state.empty_squares():
+            # We should return position and score to keep track of the score for minimax to work
+            return {
+                'position': None,
+                'score': 1 * (state.num_empty_squares() +1) if other_player == max_player 
+                        else -1 * (state.num_empty_squares()+1)
+                }
+        elif not state.empty_squares(): # No empty squares
             return {'position': None, 'score': 0}
 
         if player == max_player:
-            best = {'position': None, 'score': -math.inf}
+            best = {'position': None, 'score': -math.inf} # Each score should maximize (be larger)
         else:
-            best = {'position': None, 'score': math.inf}
-        for possible_move in state.available_moves():
-            state.make_move(possible_move, player)
-            sim_score = self.minimax(state, other_player)
+            best = {'position': None, 'score': math.inf} # Each score should minimize. so we initialize to the highest posible number.
 
-            # Undo move
+        for possible_move in state.available_moves():
+
+            # Step 1: make a move, try that spot
+            state.make_move(possible_move, player)
+            
+            # Step 2: recurse using minimax to simulate game after making that move
+            sim_score = self.minimax(state, other_player) # Now, we alternate players
+
+            # Step 3: Undo move
             state.board[possible_move] = ' '
             state.current_winner = None
-            sim_score['position'] = possible_move
+            sim_score['position'] = possible_move # set the position we have moved to, or it will mess recursion part
 
+            # Step 4: update the diictionaries if necessary
             if player == max_player:
                 if sim_score['score'] > best['score']:
                     best = sim_score
