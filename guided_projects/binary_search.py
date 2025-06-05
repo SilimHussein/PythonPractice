@@ -38,20 +38,20 @@ if __name__=='__main__':
     print(naive_search(l, target))
     print(binary_search(l, target))
 '''
-length = 10000
-sorted_list = set()
-while len(sorted_list) < length:
-    sorted_list.add(random.randint(-3*length, 3*length))
-sorted_list = sorted(list(sorted_list))
+    length = 10000
+    my_binary_list = set()
+    while len(my_binary_list) < length:
+        my_binary_list.add(random.randint(-3*length, 3*length))
+    my_binary_list= sorted(list(my_binary_list))
 
-start = time.time()
-for target in sorted_list:
-    naive_search(sorted_list, target)
-end = time.time()
-print("Naive search time: ", (end - start)/length, "seconds")
+    start = time.time()
+    for target in my_binary_list:
+        naive_search(my_binary_list, target)
+    end = time.time()
+    print("Naive search time: ", (end - start)/length, "seconds")
 
-start = time.time()
-for target in sorted_list:
-    binary_search(sorted_list, target)
-end = time.time()
-print("Binary search time: ", (end - start)/length, "seconds")
+    start = time.time()
+    for target in my_binary_list:
+        binary_search(my_binary_list, target)
+    end = time.time()
+    print("Binary search time: ", (end - start)/length, "seconds")
