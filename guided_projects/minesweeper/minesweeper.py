@@ -101,7 +101,7 @@ class Board:
 
         # self.board[row][col] == 0
         for r in range(max(0, row-1), min(self.dim_size-1, row+1)+1):
-            for c in range(max(0, col-1). min(self.dim_size-1, col+1)+1):
+            for c in range(max(0, col-1), min(self.dim_size-1, col+1)+1):
                 if (r, c) in self.dug:
                     continue # dont dig where you've already dug
                 self.dig(r, c)
@@ -163,19 +163,16 @@ class Board:
 # Play the game
 def play(dim_size=10, num_bombs=10):
     # Step 1: create the board and plant the bombs
-    board = Board(dim_size, num_bombs)
-
     # Step 2: show the user the board and ask for where they want to dig
     # Step 3a: if location is a bomb, show game over message
     # Step 3b: if location is not a bomb, dig recursively until each square is at least next to a bomb
     # Step 4: repeat steps 2 and 3 until there are no more places to dig -> VICTORY!
-
+    board = Board(dim_size, num_bombs)
     safe = True
 
     while len(board.dug) < board.dim_size ** 2 - num_bombs:
         print(board)
-        # 0,0 or 0, 0 or 0,    0
-        user_input = re.split(',(\\s)*', input("Where would you like to dig? Input as row,col: ")) # '0, 3'
+        user_input = re.split(',(\\s)*', input("Where would you like to dig? Input as row,col: ")) # 0,0 or 0, 0 or 0,    0
         row, col = int(user_input[0]), int(user_input[-1])
         if row < 0 or row >= board.dim_size or col < 0 or col >= dim_size:
             print("Invalid location, Try again.")
