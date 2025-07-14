@@ -55,5 +55,5 @@ class Image:
         
 
 if __name__ == '__main__':
-    im = Image(filename='lake.png')
-    im.write_image('test1.png')
+    im = Image(filename='city.png')
+    im.write_image('test2.png')
